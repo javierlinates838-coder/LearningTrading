@@ -34,6 +34,8 @@ export default defineConfig(({ mode }) => {
         },
         workbox: {
           globPatterns: ['**/*.{js,css,html,svg,png,woff2,webmanifest}'],
+          // English UI: only the Latin font subsets are needed offline.
+          globIgnores: ['**/inter-{cyrillic,cyrillic-ext,greek,greek-ext,vietnamese}-*.woff2'],
           navigateFallback: 'index.html',
           cleanupOutdatedCaches: true,
         },
