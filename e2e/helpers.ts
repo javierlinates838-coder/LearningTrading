@@ -17,12 +17,12 @@ export async function completeFirstLesson(page: Page) {
   const cont = page.getByRole('button', { name: /^Continue/ });
   await cont.click();
   await page.getByLabel('Value of your 2 shares, in dollars').fill('24');
-  await page.getByRole('button', { name: 'Check answer' }).click();
+  await page.getByRole('button', { name: /^Check (answer|again)/ }).click();
   await expect(page.locator('.feedback.is-correct')).toBeVisible();
   await cont.click();
   await cont.click();
   await page.getByRole('radio', { name: /\$4 unrealized gain/ }).check();
-  await page.getByRole('button', { name: 'Check answer' }).click();
+  await page.getByRole('button', { name: /^Check (answer|again)/ }).click();
   await expect(page.locator('.feedback.is-correct')).toBeVisible();
   await cont.click();
   await expect(page.getByRole('heading', { name: 'Lesson recap' })).toBeVisible();

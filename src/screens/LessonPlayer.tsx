@@ -112,7 +112,9 @@ export function LessonPlayer() {
             Goal: {lesson.objective}
           </p>
         </div>
-      ) : null}
+      ) : (
+        <h1 className="visually-hidden">{lesson.title}</h1>
+      )}
 
       <div className="player-step fade-in" key={index}>
         {step?.kind === 'concept' ? (

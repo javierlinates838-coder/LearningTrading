@@ -75,6 +75,10 @@ textarea {
   outline-offset: 2px;
   border-radius: 6px;
 }
+/* Focus is moved to headings and feedback for screen readers; they are not controls. */
+[tabindex='-1']:focus {
+  outline: none;
+}
 [hidden] {
   display: none !important;
 }
@@ -473,6 +477,7 @@ textarea {
 }
 .sim-badge {
   display: inline-flex;
+  white-space: nowrap;
   align-items: center;
   gap: var(--space-1);
   padding: 2px var(--space-2);
@@ -1100,8 +1105,13 @@ legend {
 }
 .quote-strip {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-2);
+}
+@media (min-width: 420px) {
+  .quote-strip {
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+  }
 }
 .quote-cell {
   padding: var(--space-2) var(--space-3);

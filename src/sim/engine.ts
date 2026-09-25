@@ -151,12 +151,13 @@ export function visibleEvents(state: SimState): QuoteEvent[] {
 export function createSim(scenarioId: string, assumptions: Assumptions = DEFAULT_ASSUMPTIONS, runId = `run-${Date.now()}`): SimState {
   const s = getScenario(scenarioId);
   if (!s) throw new Error(`Unknown scenario ${scenarioId}`);
-  const first = generateEvents(s)[0]!;
+  const events = generateEvents(s);
+  const cursor = Math.min(s.warmupEvents ?? 0, events.length - 2);
   return {
     scenarioId,
     scenarioVersion: s.version,
-    cursor: 0,
-    lastProcessedSeq: first.seq,
+    cursor,
+    lastProcessedSeq: events[cursor]!.seq,
     assumptions,
     orders: [],
     ledger: [{ id: 'l1', seq: 0, kind: 'deposit', cash: STARTING_CASH_CENTS, shares: 0, note: 'Virtual training balance' }],

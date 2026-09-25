@@ -97,15 +97,16 @@ describe('synthetic scenarios', () => {
 
   it('builds candles only from visible events (no hindsight)', () => {
     let s = createSim('steady-climb', noFees);
+    expect(visibleEvents(s)).toHaveLength(37);
     s = run(s, 8);
     const vis = visibleEvents(s);
-    expect(vis).toHaveLength(9);
+    expect(vis).toHaveLength(45);
     const candles = buildCandles(vis);
     const maxSeq = Math.max(...candles.map((c) => c.endSeq));
     expect(maxSeq).toBe(vis[vis.length - 1]!.seq);
     expect(candles[candles.length - 1]!.complete).toBe(false);
     const all = eventsFor(s);
-    const future = all.slice(9).map((e) => e.last);
+    const future = all.slice(45).map((e) => e.last);
     const visibleHigh = Math.max(...candles.map((c) => c.high));
     expect(visibleHigh).toBe(Math.max(...vis.map((e) => e.last)));
     expect(future.length).toBeGreaterThan(0);

@@ -108,7 +108,8 @@ function StatusBanners() {
 
 export function AppShell() {
   const loc = useLocation();
-  const focusMode = loc.pathname.startsWith('/learn/') || loc.pathname.startsWith('/practice/');
+  const { settings } = useAppState();
+  const focusMode = loc.pathname.startsWith('/learn/') || loc.pathname.startsWith('/practice/') || (loc.pathname === '/' && !settings.onboarded);
   const first = useRef(true);
   useEffect(() => {
     if (first.current) {

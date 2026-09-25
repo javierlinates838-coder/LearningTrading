@@ -44,6 +44,8 @@ export interface Scenario {
   description: string;
   seed: number;
   startPrice: number;
+  /** Quotes already on screen when a run starts, so the chart has context. Orders can only fill after them. */
+  warmupEvents?: number;
   segments: Segment[];
 }
 
@@ -82,6 +84,7 @@ export const SCENARIOS: Scenario[] = [
     description: 'Prices mostly make higher highs and higher lows, with pullbacks along the way.',
     seed: 1101,
     startPrice: 2000,
+    warmupEvents: 36,
     segments: [
       { events: 36, drift: 2, noise: 7, spread: 2, volume: 900 },
       { events: 18, drift: -2, noise: 6, spread: 2, volume: 600 },
@@ -99,6 +102,7 @@ export const SCENARIOS: Scenario[] = [
     description: 'Lower highs and lower lows. Bounces happen, but sellers keep returning.',
     seed: 2202,
     startPrice: 3500,
+    warmupEvents: 36,
     segments: [
       { events: 30, drift: -2.5, noise: 9, spread: 3, volume: 1100 },
       { events: 18, drift: 2, noise: 7, spread: 3, volume: 700 },
@@ -116,6 +120,7 @@ export const SCENARIOS: Scenario[] = [
     description: 'Price swings between a rough floor and ceiling without a clear trend.',
     seed: 3303,
     startPrice: 1500,
+    warmupEvents: 36,
     segments: [
       { events: 24, drift: 2.5, noise: 5, spread: 2, volume: 700 },
       { events: 24, drift: -2.5, noise: 5, spread: 2, volume: 700 },
@@ -134,6 +139,7 @@ export const SCENARIOS: Scenario[] = [
     description: 'A calm session, then the next session opens far lower. Stops can fill well below their price.',
     seed: 4404,
     startPrice: 2800,
+    warmupEvents: 36,
     segments: [
       { events: 48, drift: 0.6, noise: 6, spread: 3, volume: 800 },
       { events: 30, drift: 0.4, noise: 6, spread: 3, volume: 700 },
@@ -150,6 +156,7 @@ export const SCENARIOS: Scenario[] = [
     description: 'A new session opens well above the prior close. Chasing the jump is one of the choices.',
     seed: 5505,
     startPrice: 1800,
+    warmupEvents: 36,
     segments: [
       { events: 48, drift: 0.2, noise: 5, spread: 2, volume: 700 },
       { events: 18, drift: 1.2, noise: 10, spread: 4, gap: 150, volume: 2400 },
@@ -166,6 +173,7 @@ export const SCENARIOS: Scenario[] = [
     description: 'Price pushes above a ceiling, then falls back inside the range.',
     seed: 6606,
     startPrice: 1600,
+    warmupEvents: 36,
     segments: [
       { events: 24, drift: 2, noise: 5, spread: 2, volume: 700 },
       { events: 24, drift: -2, noise: 5, spread: 2, volume: 700 },
