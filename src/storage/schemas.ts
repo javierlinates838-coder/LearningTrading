@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { progressSchema, emptyProgress, type ProgressState } from '../engine/progress';
-import { simStateSchema, type SimState } from '../sim/engine';
+import { assumptionsSchema, DEFAULT_ASSUMPTIONS, simStateSchema, type SimState } from '../sim/engine';
 import { journalSchema, type JournalState } from '../sim/journal';
 import type { StorageKey } from './db';
 
@@ -10,6 +10,9 @@ export const settingsSchema = z.object({
   studyGoalMinutes: z.union([z.literal(5), z.literal(10), z.null()]),
   motion: z.enum(['system', 'reduce', 'full']),
   textScale: z.union([z.literal(100), z.literal(115), z.literal(130)]),
+  /** Chosen at onboarding ("I know some basics"): every lesson is open, prerequisites become suggestions. */
+  unlockAll: z.boolean(),
+  simAssumptions: assumptionsSchema,
 });
 export type Settings = z.infer<typeof settingsSchema>;
 
@@ -19,6 +22,8 @@ export const defaultSettings = (): Settings => ({
   studyGoalMinutes: null,
   motion: 'system',
   textScale: 100,
+  unlockAll: false,
+  simAssumptions: { ...DEFAULT_ASSUMPTIONS },
 });
 
 export interface AppData {

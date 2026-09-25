@@ -107,7 +107,7 @@ describe('migrations', () => {
   it('runs registered migrations in order and validates the result', () => {
     const registry = { ...MIGRATIONS, settings: { 1: (d: unknown) => ({ ...(d as object), textScale: 100 }) } };
     const current = { ...CURRENT_SCHEMA, settings: 2 };
-    const old = { onboarded: true, nickname: '', studyGoalMinutes: 5, motion: 'system' };
+    const old = { onboarded: true, nickname: '', studyGoalMinutes: 5, motion: 'system', unlockAll: false, simAssumptions: { feePerFill: 50, slippagePerShare: 1 } };
     const r = migrateAndValidate('settings', 1, old, registry, current);
     expect(r).toMatchObject({ ok: true, migrated: true, data: { textScale: 100 } });
   });
