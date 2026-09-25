@@ -92,7 +92,7 @@ export function Practice() {
           return (
             <li key={lab.id}>
               <Link to={`/practice/lab/${lab.id}`} className="list-link" style={{ alignItems: 'flex-start', height: '100%' }}>
-                <Icon size={28} aria-hidden className="mastery" style={{ flex: 'none' }} />
+                <Icon size={28} aria-hidden style={{ flex: 'none', color: 'var(--color-accent)' }} />
                 <span className="grow">
                   <strong>{lab.title}</strong>
                   <span className="small muted" style={{ display: 'block' }}>

@@ -7,8 +7,9 @@ import './styles/app.css';
 import { App } from './App';
 import { appStore } from './storage/store';
 import { initPwa } from './pwa';
+import { reconcileLessons } from './state/app';
 
-void appStore.init();
+void appStore.init().then(reconcileLessons);
 initPwa();
 
 createRoot(document.getElementById('root')!).render(

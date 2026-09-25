@@ -129,6 +129,37 @@ test('offline return: the installed app shell loads without a network', async ({
   await context.setOffline(false);
 });
 
+test('backup: export, erase everything, import restores progress', async ({ page }) => {
+  await onboard(page);
+  await completeFirstLesson(page);
+  await page.goto('/settings');
+  await expect(page.getByText('Saved in this browser. Export a backup to move your progress.')).toBeVisible();
+  const [download] = await Promise.all([page.waitForEvent('download'), page.getByRole('button', { name: 'Export backup' }).click()]);
+  const file = await download.path();
+
+  await page.getByRole('button', { name: 'Erase everything' }).click();
+  await page.getByRole('dialog').getByRole('button', { name: 'Erase everything' }).click();
+  await expect(page).toHaveURL(/\/$/);
+  await page.reload();
+  await expect(page.getByText('Practice with virtual money. No real trades happen here.')).toBeVisible();
+
+  await page.goto('/settings');
+  await page.locator('input[type=file]').setInputFiles(file);
+  const dialog = page.getByRole('dialog', { name: 'Import this backup?' });
+  await expect(dialog).toContainText('Lessons completed');
+  await dialog.getByText('Replace', { exact: true }).click();
+  await dialog.getByRole('button', { name: 'Replace with backup' }).click();
+  await expect(page.getByText('Backup restored.')).toBeVisible();
+  await page.goto('/progress');
+  await expect(page.getByText('of 40 completed')).toBeVisible();
+  await page.goto('/learn/u1-shares');
+  await expect(page.getByText('reviewing a completed lesson')).toBeVisible();
+
+  await page.goto('/settings');
+  await page.locator('input[type=file]').setInputFiles({ name: 'bad.json', mimeType: 'application/json', buffer: Buffer.from('{"nope":1}') });
+  await expect(page.getByRole('alert')).toContainText('not a backup created by this app');
+});
+
 test('unknown routes show a helpful 404', async ({ page }) => {
   await onboard(page);
   await page.goto('/does-not-exist');

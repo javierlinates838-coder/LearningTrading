@@ -1,0 +1,52 @@
+## UI Pro Max Search Results
+**Domain:** chart | **Query:** candlestick price chart financial
+**Source:** charts.csv | **Found:** 3 results
+
+### Result 1
+- **Data Type:** Stock / Trading OHLC
+- **Keywords:** stock, trading, ohlc, candlestick, finance, price, volume, accessible chart, keyboard accessible chart
+- **Best Chart Type:** Candlestick Chart
+- **Secondary Options:** OHLC Bar, Heikin-Ashi
+- **When to Use:** Financial time-series with Open/High/Low/Close data; trading or investment product context only
+- **When NOT to Use:** Non-financial audience; no OHLC data available (use line chart); accessibility-first context
+- **Data Volume Threshold:** Real-time: Canvas required. Historical: paginate by time range. Max 500 candles visible at once
+- **Color Guidance:** Bullish: #26A69A. Bearish: #EF5350. Volume bars: 40% opacity below. Body fill vs hollow for OHLC style
+- **Accessibility Grade:** deprecated: use Accessibility Risk
+- **Accessibility Risk:** risk:conditional
+- **Accessibility Notes:** Use filled versus hollow candles and OHLC text values; bullish/bearish meaning cannot depend on color. Do not rely on color alone.
+- **A11y Fallback:** Sortable OHLC table plus daily-change summary. Keyboard: focus reveals candle values; +/- buttons zoom; Reset restores range; live updates do not steal focus.
+- **Library Recommendation:** Lightweight Charts (TradingView), ApexCharts
+- **Interactive Level:** Real-time + Hover + Zoom
+
+### Result 2
+- **Data Type:** Performance vs Target
+- **Keywords:** performance, target, kpi, gauge, goal, threshold, progress, accessible chart, keyboard accessible chart
+- **Best Chart Type:** Gauge Chart or Bullet Chart
+- **Secondary Options:** Dial, Thermometer
+- **When to Use:** Single KPI measured against a defined target or threshold; dashboard summary context
+- **When NOT to Use:** No target or benchmark exists; comparing multiple KPIs at once (use bullet chart grid)
+- **Data Volume Threshold:** Single metric per gauge; for 3+ KPIs use bullet chart grid layout
+- **Color Guidance:** Performance: Red → Yellow → Green gradient. Target: marker line. Threshold zones clearly differentiated
+- **Accessibility Grade:** deprecated: use Accessibility Risk
+- **Accessibility Risk:** risk:low
+- **Accessibility Notes:** Place the number and target text beside the gauge and label threshold zones; red/yellow/green alone is insufficient.
+- **A11y Fallback:** Visible KPI/target text and a one-row data table plus status summary. Keyboard: focus reveals the same detail as hover.
+- **Library Recommendation:** D3.js, ApexCharts, Custom SVG
+- **Interactive Level:** Hover
+
+### Result 3
+- **Data Type:** Real-Time Streaming
+- **Keywords:** streaming, real-time, ticker, live, velocity, pulse, monitoring, accessible chart, keyboard accessible chart
+- **Best Chart Type:** Streaming Area Chart
+- **Secondary Options:** Ticker Tape, Moving Gauge
+- **When to Use:** Live monitoring dashboards; IoT/ops data updating at ≥1 Hz; user needs current value at a glance
+- **When NOT to Use:** Update frequency < 1/min (use periodic-refresh line chart); flashing content without reduced-motion support
+- **Data Volume Threshold:** Canvas/WebGL required. Buffer last 60–300s of data. Downsample older data on scroll
+- **Color Guidance:** Current pulse: #00FF00 (dark theme) or #0080FF (light theme). History: fading opacity. Grid: dark background
+- **Accessibility Grade:** deprecated: use Accessibility Risk
+- **Accessibility Risk:** risk:conditional
+- **Accessibility Notes:** Show the current value and status text and use line styles or markers in addition to color. Do not rely on color alone.
+- **A11y Fallback:** Streaming data table plus current-value/trend summary. Keyboard: Pause/Resume button controls updates; focus reveals values; +/- buttons zoom; Reset restores range.
+- **Library Recommendation:** Smoothed D3.js, CanvasJS
+- **Interactive Level:** Real-time + Pause + Zoom
+

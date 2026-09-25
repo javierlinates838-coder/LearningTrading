@@ -32,9 +32,7 @@ export function LessonPlayer() {
     if (!ready || !lesson) return;
     const cur = appStateLesson(lesson.id);
     if (!cur || cur.lessonVersion !== lesson.version) updateProgress((p) => startLesson(p, lesson.id, lesson.version, nowIso()));
-    else updateProgress((p) => (p.lastLessonId === lesson.id ? p : { ...p, lastLessonId: lesson.id }));
-    if (cur && cur.status !== 'completed' && cur.stepIndex >= lesson.steps.length) finishLesson(lesson.id);
-  }, [ready, lesson]);
+    else updateProgress((p) => (p.lastLessonId === lesson.id ? p : { ...p, lastLessonId: lesson.id }));  }, [ready, lesson]);
 
   const total = lesson ? lesson.steps.length + 1 : 0;
   const index = completedBefore ? reviewIndex : Math.min(ls?.stepIndex ?? 0, total - 1);

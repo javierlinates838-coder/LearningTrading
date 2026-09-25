@@ -72,6 +72,19 @@ export function finishLesson(lessonId: string): { completed: boolean; xpGained: 
   return out;
 }
 
+/**
+ * A lesson whose saved step is the recap but whose completion write did not
+ * land (tab closed within milliseconds) is completed on the next start.
+ * completeLesson still requires every exercise to have been answered.
+ */
+export function reconcileLessons() {
+  const { progress } = appStore.getSnapshot();
+  for (const [id, ls] of Object.entries(progress.lessons)) {
+    const lesson = lessonById(id);
+    if (lesson && ls.status !== 'completed' && ls.stepIndex >= lesson.steps.length) finishLesson(id);
+  }
+}
+
 export function updateProgress(fn: (p: ProgressState) => ProgressState) {
   appStore.update('progress', fn);
 }

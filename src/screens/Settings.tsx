@@ -1,5 +1,5 @@
 import { useId, useRef, useState } from 'react';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { DownloadSimple, UploadSimple } from '@phosphor-icons/react';
 import { APP_NAME } from '../config/app';
 import { Page } from '../components/Page';
@@ -53,6 +53,7 @@ export function Settings() {
   const [importError, setImportError] = useState<string | null>(null);
   const [pending, setPending] = useState<{ data: AppData; summary: ImportSummary } | null>(null);
   const [mode, setMode] = useState<'merge' | 'replace'>('merge');
+  const nav = useNavigate();
 
   const current = (): AppData => ({ settings: state.settings, progress: state.progress, sim: state.sim, journal: state.journal });
 
@@ -91,7 +92,12 @@ export function Settings() {
     if (!pending) return;
     appStore.replace(applyImport(current(), pending.data, mode));
     setPending(null);
-    setMessage(mode === 'merge' ? 'Backup merged. Nothing you had on this device was removed.' : 'Backup restored. This device now matches the backup.');
+    setMessage('Importing…');
+    void appStore.flush().then(() => {
+      const failed = appStore.getSnapshot().issues.some((i) => i.kind === 'quota' || i.kind === 'write-failed' || i.kind === 'conflict');
+      if (failed) setMessage('The backup is loaded in this tab but could not be fully saved. See the storage notice above, and keep your backup file.');
+      else setMessage(mode === 'merge' ? 'Backup merged. Nothing you had on this device was removed.' : 'Backup restored. This device now matches the backup.');
+    });
   };
 
   const doReset = () => {
@@ -103,6 +109,7 @@ export function Settings() {
       setMessage('Learning progress reset. Your journal and settings are unchanged.');
     } else if (confirm === 'everything') {
       appStore.replace({ settings: defaultSettings(), progress: defaults.progress(), sim: null, journal: defaults.journal() });
+      void appStore.flush().then(() => nav('/'));
     }
     setConfirm(null);
   };
