@@ -96,6 +96,7 @@ export const unit06: Unit = {
         {
           kind: 'concept',
           id: 'ratio',
+          visual: { kind: 'scene', scene: 'ladder', caption: 'Reward is the distance up to the target. Risk is the distance down to the stop.' },
           title: 'Reward compared with risk',
           body:
             'Potential reward = shares × (target − entry). [[reward-to-risk]] = potential reward ÷ planned risk.\n\nEntry $20, stop $19, target $22, 10 shares: reward $20, risk $10, so 2 to 1. A high ratio alone does not make a trade attractive: distant targets are usually reached less often.',
@@ -162,6 +163,7 @@ export const unit06: Unit = {
         {
           kind: 'concept',
           id: 'costs',
+          visual: { kind: 'scene', scene: 'costs', caption: 'Fees and the spread shrink a gain and add to a loss.' },
           title: 'Every trade has costs',
           body:
             'This simulator charges a training [[fee]] on every fill and adds [[slippage]] to market-style fills. Real brokers and markets differ.\n\nCosts make losses bigger and gains smaller. FINRA notes that frequent trading brings higher costs that can erode returns.',
@@ -169,6 +171,7 @@ export const unit06: Unit = {
         {
           kind: 'concept',
           id: 'not-guarantee',
+          visual: { kind: 'scene', scene: 'gap', caption: 'A gap can carry price past the stop. The fill is the next available price.' },
           title: 'A stop is a trigger, not a ceiling on loss',
           body:
             'If price gaps below your stop, the order fills at the next available price. So plan with an allowance for costs and slippage, and keep size small enough that a worse-than-planned fill is survivable. Actual losses can still exceed the estimate.',
@@ -236,7 +239,8 @@ export const unit06: Unit = {
       prerequisites: ['u6-costs'],
       contentType: 'scenario',
       steps: [
-        { kind: 'concept', id: 'intro', title: 'New numbers', body: 'A new plan with different prices. Show the arithmetic still works.' },
+        { kind: 'concept', id: 'intro', title: 'New numbers', body: 'A new plan with different prices. Show the arithmetic still works.' , visual: { kind: 'scene', scene: 'ladder', caption: 'Same ladder, new prices.' }, },
+
         {
           kind: 'exercise',
           id: 'cp-size',

@@ -23,6 +23,7 @@ export const unit07: Unit = {
         {
           kind: 'concept',
           id: 'parts',
+          visual: { kind: 'scene', scene: 'steps', caption: 'Write the setup, the stop, the size and the record before the trade.' },
           title: 'Write it before you trade',
           body:
             'A [[trade-plan]] is written before the trade.\nEntry: what has to happen for you to buy.\n[[invalidation]]: the price that shows the idea was wrong. The stop goes there.\nExit: a target, or a rule for taking profit.\nSize comes last, from the distance to invalidation and your risk budget.',
@@ -92,6 +93,7 @@ export const unit07: Unit = {
         {
           kind: 'concept',
           id: 'states',
+          visual: { kind: 'scene', scene: 'spread', caption: 'A buy waits for the next ask. A sell waits for the next bid.' },
           title: 'How the simulator handles orders',
           body:
             'An order submitted while paused waits for the next quote. A pending buy holds [[reserved-cash]] so it can’t be spent twice. You can cancel anytime before it fills.\n\nAfter a buy fills, your stop and target start working together: when one fills, the other is canceled ([[oco]]).',
@@ -160,6 +162,7 @@ export const unit07: Unit = {
         {
           kind: 'concept',
           id: 'pass',
+          visual: { kind: 'scene', scene: 'pass', caption: 'Standing aside is one of the two decisions a setup can end in.' },
           title: 'Passing is a skill',
           body:
             'Every setup ends in one of two decisions: take it as planned, or pass.\n\nPass when the setup isn’t there, when the stop would be too far for your budget, or when you notice you’re trading from excitement. A good decision follows the plan, whatever the next candle does.',
@@ -231,7 +234,8 @@ export const unit07: Unit = {
       prerequisites: ['u7-trade-or-pass'],
       contentType: 'scenario',
       steps: [
-        { kind: 'concept', id: 'intro', title: 'Putting the plan to work', body: 'New situations for planning, order handling and the trade-or-pass decision.' },
+        { kind: 'concept', id: 'intro', title: 'Putting the plan to work', body: 'New situations for planning, order handling and the trade-or-pass decision.' , visual: { kind: 'scene', scene: 'steps', caption: 'Plan, then decide whether the order belongs.' }, },
+
         {
           kind: 'exercise',
           id: 'cp-seq',

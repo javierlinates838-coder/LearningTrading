@@ -22,6 +22,7 @@ export const unit09: Unit = {
         {
           kind: 'concept',
           id: 'record',
+          visual: { kind: 'scene', scene: 'journal', caption: 'One side is the plan you wrote. The other is what the fills actually did.' },
           title: 'The facts, then the thinking',
           body:
             'A [[journal]] entry records the plan (entry, stop, target, reason), what happened (fills, costs, exit reason), and a short reflection.\n\nThe [[r-multiple]] compares the result with the risk you planned: net profit or loss ÷ initial risk. Risk is fixed when you enter, so moving the stop later can’t make a trade look better.',
@@ -102,6 +103,7 @@ export const unit09: Unit = {
         {
           kind: 'concept',
           id: 'two-grades',
+          visual: { kind: 'scene', scene: 'grades', caption: 'A sound decision can still lose money. Grade them separately.' },
           title: 'Two separate questions',
           body:
             'Every trade gets two grades.\nDecision: did you follow a sound plan with sensible risk?\nOutcome: did it make or lose money?\n\nA sound plan can lose, and a reckless trade can win. Judging by outcome alone teaches you to repeat lucky mistakes and abandon sound plans.',
@@ -176,6 +178,7 @@ export const unit09: Unit = {
         {
           kind: 'concept',
           id: 'stats',
+          visual: { kind: 'scene', scene: 'sample', caption: 'A handful of trades can look decisive by chance. A larger sample is harder to misread.' },
           title: 'Reading your numbers',
           body:
             '[[win-rate]] is winners ÷ total trades. It says nothing about size: a 40% win rate can be fine if wins are bigger than losses.\n\n[[average-win]] and [[average-loss]] (in R) complete the picture.\n\n[[sample-size]] matters most. Ten trades can look great or terrible by chance. Treat small samples as a rough hint, not proof.',
@@ -267,7 +270,8 @@ export const unit09: Unit = {
       prerequisites: ['u9-stats'],
       contentType: 'scenario',
       steps: [
-        { kind: 'concept', id: 'intro', title: 'Review like a coach', body: 'New numbers and new trades. Compute, then judge the process separately from the result.' },
+        { kind: 'concept', id: 'intro', title: 'Review like a coach', body: 'New numbers and new trades. Compute, then judge the process separately from the result.' , visual: { kind: 'scene', scene: 'grades', caption: 'Compute the result, then judge the decision on its own.' }, },
+
         {
           kind: 'exercise',
           id: 'cp-r',

@@ -23,6 +23,7 @@ export const unit10: Unit = {
         {
           kind: 'concept',
           id: 'testable',
+          visual: { kind: 'scene', scene: 'hypothesis', caption: 'A vague slogan cannot be checked. A rule names the entry, the stop and the exit.' },
           title: 'Vague ideas can’t be tested',
           body:
             '“Buy strong stocks” can’t be tested: you can’t tell if you followed it.\n\nA testable [[hypothesis]] says exactly when you enter, where you are wrong, and when you exit. For example: “After a pullback to a support zone, buy when a candle closes back above the zone. Stop below the zone. Target 2R.”\n\nThen you can count results honestly.',
@@ -90,6 +91,7 @@ export const unit10: Unit = {
         {
           kind: 'concept',
           id: 'hindsight',
+          visual: { kind: 'scene', scene: 'hindsight', caption: 'The right side of the chart was blank when the decision had to be made.' },
           title: 'The chart looks obvious later',
           body:
             'On a finished chart, the best entries look obvious. At the time, the right side of the chart was blank.\n\n[[hindsight-bias]] makes past setups look easier than they were, and makes a method look better than it is. The simulator helps by revealing one quote at a time and filling orders only on quotes you haven’t seen yet.',
@@ -169,6 +171,7 @@ export const unit10: Unit = {
         {
           kind: 'concept',
           id: 'together',
+          visual: { kind: 'scene', scene: 'steps', caption: 'Setup, stop, size and a journal entry. Readiness is the record, not a feeling.' },
           title: 'Putting it together',
           body:
             'A complete practice trade uses everything: a testable setup, a stop at invalidation, a size from your [[risk-budget]] including costs, a target, and a journal entry.\n\nReadiness isn’t a feeling or a profit. It’s evidence: many simulated trades where you followed the plan, with honest records of the losses too.',
@@ -238,7 +241,8 @@ export const unit10: Unit = {
       prerequisites: ['u10-capstone'],
       contentType: 'scenario',
       steps: [
-        { kind: 'concept', id: 'intro', title: 'The last check', body: 'Three new situations covering testable setups, hindsight and self-review. Then keep practicing in the simulator.' },
+        { kind: 'concept', id: 'intro', title: 'The last check', body: 'Three new situations covering testable setups, hindsight and self-review. Then keep practicing in the simulator.' , visual: { kind: 'scene', scene: 'hypothesis', caption: 'One last set of situations, then the simulator.' }, },
+
         {
           kind: 'exercise',
           id: 'cp-testable',

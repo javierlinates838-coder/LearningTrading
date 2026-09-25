@@ -11,6 +11,8 @@ import { appStore } from '../storage/store';
 import { Page, usePageTitle } from '../components/Page';
 import { ExerciseView } from '../exercises/ExerciseView';
 import { NotFound } from './NotFound';
+import { SceneArt } from '../components/scenes';
+import type { SceneId } from '../content/scenes';
 
 interface Lab {
   id: string;
@@ -58,6 +60,14 @@ export const LABS: Lab[] = [
   },
 ];
 
+const LAB_SCENES: Record<string, SceneId> = {
+  'candle-lab': 'welcome',
+  'chart-detective': 'zones',
+  'order-lab': 'spread',
+  'risk-builder': 'ladder',
+  decisions: 'pass',
+};
+
 export function Practice() {
   const { progress } = useAppState();
   const due = dueReviews(progress, new Date().toISOString());
@@ -91,14 +101,17 @@ export function Practice() {
           const Icon = lab.icon;
           return (
             <li key={lab.id}>
-              <Link to={`/practice/lab/${lab.id}`} className="list-link" style={{ alignItems: 'flex-start', height: '100%' }}>
-                <Icon size={28} aria-hidden style={{ flex: 'none', color: 'var(--color-accent)' }} />
+              <Link to={`/practice/lab/${lab.id}`} className="lab-card">
+                <SceneArt id={LAB_SCENES[lab.id] ?? 'steps'} label="" decorative />
+                <span className="row">
+                <Icon size={22} aria-hidden style={{ flex: 'none', color: 'var(--color-accent)' }} />
                 <span className="grow">
                   <strong>{lab.title}</strong>
                   <span className="small muted" style={{ display: 'block' }}>
                     {lab.description}
                   </span>
                   <span className="xs faint">{count} items</span>
+                </span>
                 </span>
               </Link>
             </li>

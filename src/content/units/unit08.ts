@@ -22,6 +22,7 @@ export const unit08: Unit = {
         {
           kind: 'concept',
           id: 'chasing',
+          visual: { kind: 'scene', scene: 'fomo', caption: 'The move on screen already happened. A plan still needs a reason and a stop.' },
           title: 'Chasing a move',
           body:
             '[[fomo]] is the urge to jump in because a price is moving and others seem to be profiting.\n\nThe signs: no setup, no stop, a feeling of urgency, and a reason that starts with “everyone”. The move you see has already happened. What matters is the risk from here, and whether it fits your plan.',
@@ -90,6 +91,7 @@ export const unit08: Unit = {
         {
           kind: 'concept',
           id: 'revenge',
+          visual: { kind: 'scene', scene: 'revenge', caption: 'Dragging the stop lower makes the planned loss larger.' },
           title: 'After a loss',
           body:
             '[[revenge-trading]] means taking bigger or faster trades to win back a loss. Moving a stop lower is its quiet cousin: you avoid admitting the idea was wrong, and the loss grows.\n\nThe stop was placed at [[invalidation]]. If price gets there, the plan said the idea is wrong. Moving it changes the risk you agreed to.',
@@ -164,6 +166,7 @@ export const unit08: Unit = {
         {
           kind: 'concept',
           id: 'red-flags',
+          visual: { kind: 'scene', scene: 'scam', caption: 'Guaranteed returns, pressure to act, and an unregistered seller are warning signs.' },
           title: 'What regulators warn about',
           body:
             'U.S. regulators list warning signs of investment fraud: guaranteed high returns with little risk, pressure to act now, unsolicited offers, unregistered sellers, and requests to pay in unusual ways.\n\nOnline, promoters may hype a stock to push its price up and then sell. Anyone selling “signals” or guaranteed profits deserves extra suspicion.',
@@ -228,7 +231,8 @@ export const unit08: Unit = {
       prerequisites: ['u8-scams'],
       contentType: 'scenario',
       steps: [
-        { kind: 'concept', id: 'intro', title: 'Under pressure', body: 'Three new situations. Focus on the plan and on red flags, not on what price might do next.' },
+        { kind: 'concept', id: 'intro', title: 'Under pressure', body: 'Three new situations. Focus on the plan and on red flags, not on what price might do next.' , visual: { kind: 'scene', scene: 'fomo', caption: 'Three new situations. Look for the plan, and for red flags.' }, },
+
         {
           kind: 'exercise',
           id: 'cp-streak',

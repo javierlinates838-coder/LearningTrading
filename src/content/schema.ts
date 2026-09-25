@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { SCENE_IDS } from './scenes';
 
 const id = z.string().regex(/^[a-z0-9][a-z0-9-]*$/, 'ids are lowercase kebab-case');
 
@@ -56,6 +57,11 @@ export const visualSchema = z.discriminatedUnion('kind', [
   z.object({
     kind: z.literal('table'),
     rows: z.array(z.object({ label: z.string(), value: z.string() })).min(1),
+    caption: z.string(),
+  }),
+  z.object({
+    kind: z.literal('scene'),
+    scene: z.enum(SCENE_IDS),
     caption: z.string(),
   }),
 ]);

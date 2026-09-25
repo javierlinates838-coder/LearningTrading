@@ -120,8 +120,8 @@ export function LessonPlayer() {
             <h2 id={`step-${step.id}`} className="concept-title" ref={stepHeading} tabIndex={-1}>
               {step.title}
             </h2>
-            <RichText text={step.body} />
             {step.visual ? <Visual visual={step.visual} /> : null}
+            <RichText text={step.body} />
             {step.more ? (
               <details className="disclosure">
                 <summary>Tell me more</summary>

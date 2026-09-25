@@ -4,7 +4,7 @@ import { ShieldCheck } from '@phosphor-icons/react';
 import { APP_NAME } from '../config/app';
 import { appStore } from '../storage/store';
 import { usePageTitle } from '../components/Page';
-import { BrandMark } from '../components/BrandMark';
+import { SceneArt } from '../components/scenes';
 import { LESSONS } from '../content';
 
 export const STORAGE_NOTE = 'Saved in this browser. Export a backup to move your progress.';
@@ -47,7 +47,7 @@ export function Onboarding() {
 
       {step === 0 ? (
         <section className="stack fade-in">
-          <BrandMark size={56} />
+          <SceneArt id="welcome" label="A rising path of candles, from a finished step to the one you are on." />
           <h1 ref={headingRef} tabIndex={-1}>
             Learn how trading works, one small step at a time
           </h1>

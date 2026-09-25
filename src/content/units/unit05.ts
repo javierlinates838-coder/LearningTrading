@@ -98,6 +98,7 @@ export const unit05: Unit = {
         {
           kind: 'concept',
           id: 'breakouts',
+          visual: { kind: 'scene', scene: 'breakout', caption: 'Some moves leave the zone and continue. Others fall back inside.' },
           title: 'Beyond the zone, for now',
           body:
             'A [[breakout]] is a move beyond a zone. Some continue. Many fall back inside: a [[failed-breakout]]. Those can trap people who bought the moment price poked through.\n\nWaiting for a close beyond the zone filters some false moves, but it means a worse entry price, and it still fails sometimes.',
@@ -176,6 +177,7 @@ export const unit05: Unit = {
         {
           kind: 'concept',
           id: 'news',
+          visual: { kind: 'scene', scene: 'pass', caption: 'A fast move does not require a trade. Passing costs nothing.' },
           title: 'Not every move needs you',
           body:
             'News can move prices suddenly, sometimes with a [[gap]]. Right after news, spreads can widen and prices can swing sharply.\n\nWaiting is a valid decision. You don’t need to trade every move. Passing costs nothing, and it protects you from acting on noise or excitement.',
@@ -241,7 +243,8 @@ export const unit05: Unit = {
       prerequisites: ['u5-news-wait'],
       contentType: 'interpretive',
       steps: [
-        { kind: 'concept', id: 'intro', title: 'New context', body: 'A new chart, a new breakout question and a new decision.' },
+        { kind: 'concept', id: 'intro', title: 'New context', body: 'A new chart, a new breakout question and a new decision.' , visual: { kind: 'scene', scene: 'zones', caption: 'A new chart, with zones to read before you decide.' }, },
+
         {
           kind: 'exercise',
           id: 'cp-zone',

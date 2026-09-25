@@ -1,6 +1,7 @@
 import { useId, useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router';
-import { ArrowLeft, CaretLeft, CaretRight, Notebook, CheckCircle, XCircle, Sparkle } from '@phosphor-icons/react';
+import { ArrowLeft, CaretLeft, CaretRight, CheckCircle, XCircle, Sparkle } from '@phosphor-icons/react';
+import { SceneArt } from '../components/scenes';
 import { useAppState, saveReflection } from '../state/app';
 import {
   REFLECTION_TAGS,
@@ -51,7 +52,7 @@ export function Journal() {
     <Page title="Journal" intro="Every closed simulator trade is recorded here automatically. Reflect on the decision, not just the result.">
       {entries.length === 0 ? (
         <div className="card empty">
-          <Notebook size={48} aria-hidden />
+          <SceneArt id="journal" label="A plan page beside a page for what actually happened." />
           <h2>No trades yet</h2>
           <p>When you close a trade in the simulator, a journal entry appears here with your plan, fills and costs.</p>
           <Link to="/simulator" className="btn btn-primary">
