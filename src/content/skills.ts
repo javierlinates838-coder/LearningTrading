@@ -1,0 +1,37 @@
+import type { Skill } from './schema';
+
+export const SKILLS: Skill[] = [
+  { id: 'position-value', name: 'Value a position', unitId: 'u1' },
+  { id: 'profit-loss', name: 'Tell gains from realized profit', unitId: 'u1' },
+  { id: 'investing-vs-trading', name: 'Distinguish trading from investing', unitId: 'u1' },
+  { id: 'diversification', name: 'Explain diversification', unitId: 'u1' },
+  { id: 'spread', name: 'Understand the spread', unitId: 'u2', achievement: 'understand-spread' },
+  { id: 'market-vs-limit', name: 'Choose market or limit', unitId: 'u2' },
+  { id: 'stop-orders', name: 'Predict stop-order fills', unitId: 'u2' },
+  { id: 'ohlc', name: 'Read open, high, low, close', unitId: 'u3', achievement: 'read-a-candle' },
+  { id: 'candle-anatomy', name: 'Read bodies and wicks', unitId: 'u3' },
+  { id: 'timeframes', name: 'Combine timeframes', unitId: 'u3' },
+  { id: 'trend-range', name: 'Describe trends and ranges', unitId: 'u4' },
+  { id: 'swing-points', name: 'Confirm swing points', unitId: 'u4' },
+  { id: 'volume-context', name: 'Interpret volume carefully', unitId: 'u4' },
+  { id: 'support-resistance', name: 'Mark support and resistance zones', unitId: 'u5' },
+  { id: 'breakouts', name: 'Judge breakouts', unitId: 'u5' },
+  { id: 'waiting', name: 'Choose to wait', unitId: 'u5', achievement: 'choose-to-wait' },
+  { id: 'position-sizing', name: 'Size a position', unitId: 'u6', achievement: 'size-a-position' },
+  { id: 'reward-risk', name: 'Weigh reward against risk', unitId: 'u6' },
+  { id: 'costs-slippage', name: 'Account for costs and slippage', unitId: 'u6' },
+  { id: 'trade-plan', name: 'Write a trade plan', unitId: 'u7' },
+  { id: 'order-management', name: 'Manage simulated orders', unitId: 'u7' },
+  { id: 'trade-or-pass', name: 'Trade or pass by plan', unitId: 'u7' },
+  { id: 'fomo', name: 'Resist chasing', unitId: 'u8' },
+  { id: 'revenge-risk', name: 'Keep risk limits after a loss', unitId: 'u8' },
+  { id: 'scam-signals', name: 'Spot scam signals', unitId: 'u8', achievement: 'spot-a-scam' },
+  { id: 'journaling', name: 'Journal a decision', unitId: 'u9' },
+  { id: 'decision-vs-outcome', name: 'Separate decision from outcome', unitId: 'u9' },
+  { id: 'trading-stats', name: 'Read trading statistics', unitId: 'u9' },
+  { id: 'hypothesis', name: 'Define a testable setup', unitId: 'u10' },
+  { id: 'no-hindsight', name: 'Test without hindsight', unitId: 'u10' },
+  { id: 'self-review', name: 'Assess your own readiness honestly', unitId: 'u10' },
+];
+
+export const skillById = (id: string) => SKILLS.find((s) => s.id === id);

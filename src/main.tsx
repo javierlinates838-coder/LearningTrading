@@ -1,0 +1,22 @@
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { BrowserRouter } from 'react-router';
+import '@fontsource-variable/inter';
+import '@fontsource/instrument-serif/latin-400.css';
+import './styles/tokens.css';
+import './styles/app.css';
+import { App } from './App';
+import { appStore } from './storage/store';
+import { initPwa } from './pwa';
+import { reconcileLessons } from './state/app';
+
+void appStore.init().then(reconcileLessons);
+initPwa();
+
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, '') || undefined}>
+      <App />
+    </BrowserRouter>
+  </StrictMode>,
+);
