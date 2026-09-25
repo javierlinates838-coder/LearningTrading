@@ -12,6 +12,7 @@ Last updated 2026-09-25. Every result below comes from a command run in this rep
 | Content validation | `npm run validate:content` | **17 passed**: schema, word limits, sources on factual lessons, rubrics on interpretive items, glossary links, and a brute-force check that every item is solvable |
 | Production build | `npm run build` | Pass. Main chunk 128 KB gzip; content chunk 79 KB gzip; screens lazy-loaded. Service worker precaches 29 files (≈987 KiB) |
 | Browser journeys | `npm run e2e` (Playwright 1.63, Chrome, production preview) | **7 passed** on two consecutive runs |
+| Live deployment | `vercel deploy` (Hobby plan, project `marketquest`) | Live at https://marketquest-sigma.vercel.app. All routes, manifest, icons and `sw.js` return 200, and `sw.js` is served with `no-cache`. `E2E_BASE_URL=https://marketquest-sigma.vercel.app npm run e2e`: **7 passed** against the live site |
 | Screenshots | `SCREENSHOT_DIR=… npx playwright test e2e/screenshots.spec.ts` | 5 passed, 43 images: 10 screens at each of 360, 390, 768 and 1440px, plus 3 at 390px with 130% text. Reviewed by eye; issues found were fixed (below) |
 
 ### Browser journeys
@@ -31,7 +32,6 @@ Playwright's offline emulation reports `navigator.onLine` as `true` on documents
 - **Lighthouse / axe:** not run. Accessibility was checked through semantic structure in the tests (roles, labels, focus), the automated contrast test, and screenshot review. No score is claimed.
 - **Real devices and screen readers:** not tested. Only Chrome desktop was used, at mobile viewport sizes.
 - **Firefox and Safari:** not tested.
-- **Deployment:** no preview deploy was made. The Vercel connection available in this environment was not authorized, and no deploy token was present. `vercel.json` and `public/_redirects` are ready.
 - **Source links:** 9 sources were checked on 2026-09-25 while writing the curriculum. They were not re-checked automatically in this build.
 
 ## Issues found in review and fixed
@@ -68,4 +68,4 @@ Playwright's offline emulation reports `navigator.onLine` as `true` on documents
 | IndexedDB with versioned migrations; blocked/quota/corrupt/newer-version/conflict handling; export/import merge or replace; resets | Done |
 | PWA manifest, icons, offline, truthful update/offline states | Done |
 | Docs: README, DESIGN_SYSTEM, BUILD_STATUS | Done |
-| Preview deploy | Not done (no authorized free deploy available) |
+| Deployment | Done: https://marketquest-sigma.vercel.app (Vercel Hobby, free) |

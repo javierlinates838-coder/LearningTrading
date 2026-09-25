@@ -10,6 +10,8 @@ A mobile-first learning app that teaches how trading works using **virtual money
 
 The app name comes from `VITE_APP_NAME` in `.env`.
 
+Live: https://marketquest-sigma.vercel.app
+
 ## Run locally
 
 Requires Node 20.19+ (tested with Node 22).
@@ -36,6 +38,8 @@ npm run validate:content   # curriculum rules only: word limits, sources, solvab
 npm run build
 npm run e2e                # Playwright journeys against the preview build (run `npm run build` first)
 ```
+
+To run the journeys against a deployed site instead, set `E2E_BASE_URL`, for example `E2E_BASE_URL=https://marketquest-sigma.vercel.app npm run e2e`.
 
 Playwright uses the Chrome at `/usr/local/bin/google-chrome` if present, otherwise set `CHROME_PATH` or run `npx playwright install chromium`.
 
