@@ -57,7 +57,7 @@ export function Onboarding() {
               <p>
                 <strong>Practice with virtual money. No real trades happen here.</strong>
               </p>
-              <p className="small">No account, no deposits, no brokerage connection. {APP_NAME} is an education tool, not financial advice.</p>
+              <p>No account and no brokerage connection. {APP_NAME} is education, not financial advice.</p>
             </div>
           </div>
           <fieldset>
@@ -68,7 +68,7 @@ export function Onboarding() {
                 <span>
                   <strong>Start from zero</strong>
                   <span className="small muted" style={{ display: 'block' }}>
-                    Begin with what a share is. Lessons open in order.
+                    Lessons open in order, starting with what a share is.
                   </span>
                 </span>
               </label>
@@ -77,7 +77,7 @@ export function Onboarding() {
                 <span>
                   <strong>I know some basics</strong>
                   <span className="small muted" style={{ display: 'block' }}>
-                    Every lesson is open. You can still start at the beginning.
+                    Every lesson is open. You can still begin at the start.
                   </span>
                 </span>
               </label>

@@ -35,7 +35,7 @@ function NavItems() {
 }
 
 function StatusBanners() {
-  const { issues } = useAppState();
+  const { issues, settings } = useAppState();
   const pwa = usePwa();
   return (
     <div className="banner-stack" aria-live="polite">
@@ -68,7 +68,7 @@ function StatusBanners() {
           </div>
         </div>
       ) : null}
-      {pwa.offlineReady ? (
+      {pwa.offlineReady && settings.onboarded ? (
         <div className="notice" role="status">
           <CheckCircle size={22} aria-hidden style={{ flex: 'none' }} className="up" />
           <div className="notice-body">

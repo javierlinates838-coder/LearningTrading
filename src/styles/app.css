@@ -297,6 +297,9 @@ textarea {
 .main.focus-mode {
   padding-bottom: calc(var(--space-8) + var(--safe-bottom));
 }
+.main:has(.onboarding) {
+  padding-top: var(--space-2);
+}
 .page {
   max-width: var(--content-max);
   margin: 0 auto;
@@ -1499,13 +1502,24 @@ dialog.dialog::backdrop {
   margin-bottom: 0;
 }
 .onboarding .scene {
-  height: 88px;
+  height: 64px;
   width: auto;
   max-width: 100%;
   margin-inline: auto;
 }
 .onboarding .eyebrow {
   color: var(--color-accent);
+}
+.onboarding .notice {
+  padding: var(--space-2) var(--space-3);
+  gap: var(--space-2);
+}
+.onboarding .notice p {
+  margin: 0;
+  font-size: var(--text-sm);
+}
+.onboarding .option {
+  padding: var(--space-2) var(--space-3);
 }
 
 .toast-region {
