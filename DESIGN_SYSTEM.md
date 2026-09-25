@@ -60,7 +60,8 @@ npx -y ui-ux-pro-max-cli@2.15.0 init --ai cursor
 
 ### Type, space and size
 
-- Inter Variable, self-hosted. Body 1rem (16px) with 1.55 line height. Headings 600–700 weight.
+- Inter Variable for interface text, self-hosted. Body 1rem (16px) with 1.55 line height.
+- Instrument Serif (latin, self-hosted) for page titles, lesson headlines, the continue card and the current pathway step. It is the one place the interface stops looking like a form. Numbers stay in Inter with tabular figures.
 - `font-variant-numeric: tabular-nums` on every money, price, quantity and statistic (`.num`, `.tabular`, tables, key/value lists).
 - Text scale setting: 100%, 115% or 130%, applied as the root font size so every rem-based size grows. Verified by the enlarged-text screenshots.
 - Spacing scale `--space-1`…`--space-10` (4px base). Radii 8/12/18px.

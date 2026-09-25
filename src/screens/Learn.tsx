@@ -91,7 +91,7 @@ export function Learn() {
   return (
     <Page title="Learn" heading={settings.nickname ? `Welcome back, ${settings.nickname}` : 'Learn'} aside={aside}>
       {next ? (
-        <section className="card card-raised" aria-labelledby="continue-h" style={{ marginBottom: 'var(--space-6)' }}>
+        <section className="card card-raised feature-card" aria-labelledby="continue-h" style={{ marginBottom: 'var(--space-6)' }}>
           <p className="eyebrow">{resume ? 'Continue where you left off' : completed ? 'Up next' : 'Start here'}</p>
           <h2 id="continue-h">{next.title}</h2>
           <p className="muted">{next.objective}</p>

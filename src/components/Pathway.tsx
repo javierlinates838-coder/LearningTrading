@@ -31,18 +31,23 @@ export function Pathway({ progress, unlockAll, currentId }: { progress: Progress
         const done = u.lessons.filter((l) => progress.lessons[l.id]?.status === 'completed').length;
         return (
           <li key={u.id} className="unit-block">
-            <div className="spread" style={{ marginBottom: 8 }}>
-              <h2 id={`unit-${u.id}`} style={{ marginBottom: 0 }}>
-                <span className="muted" style={{ fontWeight: 500 }}>
-                  Unit {u.number} ·{' '}
-                </span>
-                {u.title}
-              </h2>
+            <div className="unit-head">
+              <span className="unit-index" aria-hidden="true">
+                {String(u.number).padStart(2, '0')}
+              </span>
+              <div>
+                <h2 id={`unit-${u.id}`}>
+                  <span className="visually-hidden">Unit {u.number}. </span>
+                  {u.title}
+                </h2>
+                <p className="small muted" style={{ margin: 0 }}>
+                  {u.summary}
+                </p>
+              </div>
               <span className={`pill ${done === u.lessons.length ? 'pill-mastery' : ''}`}>
-                {done} of {u.lessons.length} done
+                {done} of {u.lessons.length}
               </span>
             </div>
-            <p className="small muted">{u.summary}</p>
             <ol className="path" aria-labelledby={`unit-${u.id}`}>
               {u.lessons.map((l) => {
                 const st = lessonStatus(l, progress, unlockAll, currentId);
