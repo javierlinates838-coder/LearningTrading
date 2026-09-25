@@ -15,7 +15,7 @@ import {
   type SimState,
 } from './engine';
 import { SCENARIOS, buildCandles, generateEvents, type Scenario } from './scenarios';
-import { entryNet, entryR, journalEntryFor, journalStats, reconcile } from './journal';
+import { entryNet, entryR, journalEntryFor, journalStats, reconcile, type JournalEntry } from './journal';
 
 const noFees = { feePerFill: 0, slippagePerShare: 0 };
 
@@ -340,7 +340,7 @@ describe('ledger, risk and journal', () => {
 
   it('reconciles journal totals with the ledger across several trades', () => {
     let s = createSim('steady-climb', { feePerFill: 50, slippagePerShare: 2 });
-    const entries = [];
+    const entries: JournalEntry[] = [];
     for (let k = 0; k < 4; k++) {
       s = placeEntry(s, { type: 'market', qty: 7 + k, stop: eventsFor(s)[s.cursor]!.bid - 40, rationale: [], note: '' }).state;
       s = run(s, 4);
